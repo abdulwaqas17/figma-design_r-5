@@ -1,0 +1,141 @@
+import React from "react";
+import Navbar from "./Navbar";
+import PostTagline from "./PostTagline";
+import ThreeCarts from "./ThreeCarts";
+import Footer from "./Footer";
+import Cart from './Cart'
+
+const About = () => {
+  return (
+    <div>
+      <Navbar />
+
+      <main className="bg-gray-100 p-[20px] md:p-[50px]">
+        <section className="md:pl-[120px] pl-[20px] pr-[30px] md:pr-[100px]">
+          <h3 className="font-black">
+            Hello <span className="pl-[10px] text-gray-500">React</span>
+          </h3>
+          <h2 className="py-[20px] font-bold text-2xl md:text-4xl md:leading-[50px]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur bl
+            quisquam!
+          </h2>
+        </section>
+
+        <section>
+          <div className="flex justify-center my-[20px]">
+            <img src="/assets/figma-7.5.jpg" alt="" />
+          </div>
+        </section>
+
+        <section className="md:px-[115px] md:p-[30px] text-[0.8rem] md:text-[1rem]">
+          <p className="pb-[25px]">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Reprehenderit dignissimos quas, corporis libero nostrum odio qui
+            veritatis praesentium minus voluptate, sint tempora dolorem eum
+            similique. Nam magni nisi perferendis praesentium!
+          </p>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Reprehenderit dignissimos quas, corporis libero nostrum odio qui
+            veritatis praesentium minus voluptate, sint tempora dolorem eum
+            similique. Nam magni nisi perferendis praesentium! consectetur,
+            adipisicing elit. Reprehenderit dignissimos quas, corporis libero
+            nostrum odio qui veritatis praesentium minus volupati debitis, ipsa
+            dolorem excepturi nesciunt earum, soluta numquam quod deserunt
+            sapiente ut modi nemati debitis, ipsa dolorem excepturi nesciunt
+            earum, soluta numquam quod deserunt sapiente ut modi nemtate,
+            sintati debitis, ipsa dolorem excepturi nesciunt earum, soluta
+            numquam quod deserunt sapiente ut modi nem
+          </p>
+
+          <div className="md:my-[50px] my-[30px]">
+            <div className="pl-[13px] pt-[3px] ml-[30px] h-[100px] border-l-purple-900 border-l-[5px] h">
+              <p className="md:text-2xl text-gray-700 italic md:leading-[45px] text-[.92rem]">
+                "Lorem ipsum dolor sit amet onsectetur, adipisicing elit.
+                Consequatur libero non expedita et debitis ab perspiciatis odio.
+                Inci consectetur, adipisicing elit. Consequatuunt"
+              </p>
+            </div>
+            <p className="font-bold md:text-xl pl-[50px] md:pl-[60px] pt-[10px] md:pt-[20px] text-[1rem]">
+              - by Lorem Inpusm
+            </p>
+          </div>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+            alias consectetur earum aperiam, fugit, tempore debitis qui numquam
+            nostrum excepturi accusantium, saepe reiciendis asperiores? Sapiente
+            modi sint exercitationem dicta voluptas.l Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Facilis alias, ullam obcaecati
+            debitis, ipsa dolorem excepturi nesciunt earum, soluta numquam quod
+            deserunt sapiente ut modi nematiati debitis, ipsa dolorem excepturi
+            nesciunt earum, soluta numquam quod deserunt sapiente ut modi nemati
+            debitis, ipsa dolorem excepturi nesciunt earum, soluta numquam quod
+            deserunt sapiente ut modi nem debitis, ipsa dolorem excepturi
+            nesciunt earum, soluta numquam quod deserunt sapiente ut modi nemo
+            ipsum magni suscipit itaque!
+          </p>
+
+          <section className="flex justify-center my-[40px]">
+            <div className="md:w-[75%] w-full md:h-[320px] h-[250px] bg-[url(assets/figma-16.jpg)] bg-cover bg-center rounded-[16px]"></div>
+          </section>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut
+            laboriosam nihil recusandae delectus veniam voluptate esse ipsum cum
+            temporibus ab, soluta error. Atque vero dignissimos incidunt error.
+            Voluptatum, quis accusantium?. Atque vero dignissimos incidunt
+            error. Voluptatum, quis accusantium?. Atque vero dignissimos
+            incidunt error. Voluptatum, quis accusantium?
+          </p>
+        </section>
+
+        <section>
+          <PostTagline postValue="Popular Post" />
+
+          <div className="flex justify-between flex-wrap gap-[40px]">
+            <Cart
+              detail={
+                <p className="font-bold">
+                  Travel10{" "}
+                  <span className="font-normal text-gray-700">jan 2025</span>
+                </p>
+              }
+              heading="Train Or Bus? Journey Which One Suit"
+              para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
+              imgLink="/assets/figma-3.jpg"
+            />
+
+            <Cart
+              detail={
+                <p className="font-bold">
+                  Travel10{" "}
+                  <span className="font-normal text-gray-700">jan 2025</span>
+                </p>
+              }
+              heading="Best Website to reserch for your new Job"
+              para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
+              imgLink="/assets/figma-2.jpg"
+            />
+
+            <Cart
+              detail={
+                <p className="font-bold">
+                  Travel10{" "}
+                  <span className="font-normal text-gray-700">jan 2025</span>
+                </p>
+              }
+              heading="How to be a Dancer in 2025 With Popuar skills"
+              para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
+              imgLink="/assets/figma-1.jpg"
+            />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default About;
