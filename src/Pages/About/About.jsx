@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
-import PostTagline from "./PostTagline";
-import ThreeCarts from "./ThreeCarts";
-import Footer from "./Footer";
-import Cart from './Cart'
+import Navbar from "../../Components/Navbar";
+import PostTagline from "../../Components/PostTagline";
+import ThreeCarts from "../../Components/ThreeCarts";
+import Footer from "../../Components/Footer";
+import Cart from '../../Components/Cart'
 
 const About = () => {
   return (

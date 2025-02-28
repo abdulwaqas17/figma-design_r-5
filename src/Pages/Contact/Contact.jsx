@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
 
 const Contact = () => {
   return (
@@ -94,7 +94,7 @@ const Contact = () => {
           </div>
         </section>
 
-        <section className="h-[230px]"></section>
+        <section className="h-[230px] md:h-[400px]"></section>
       </main>
 
       <Footer />

@@ -21,7 +21,7 @@ const Navbar = () => {
         <ul className="flex gap-10 items-center">
           <Link to="/blog">Blog</Link>
           <Link to="/about">About</Link>
-          <li>Icon</li>
+          <Link to="/profile">Profile</Link>
           <Link to="/contact">
             <button className="bg-purple-700 cursor-pointer px-4 py-2 rounded-md font-bold text-white">
               Contact Us
@@ -31,12 +31,12 @@ const Navbar = () => {
       </div>
 
       <div className="mobileNav text-purple-800 text-2xl md:hidden" onClick={ ()=> num == '-100%' ? setNum('0%') : setNum('-100%')}>
-      <i class="fa-solid fa-bars"></i>
+      <i className="fa-solid fa-bars"></i>
       </div>
 
       <div className ="mobileMenu md:hidden bg-purple-800 fixed top-[60px] w-full transition-all duration-300" style={{left:num}}>
         <ul className="text-center py-[30px] text-[1rem] font-bold">
-        <Link className="py-[10px] block text-white hover:text-purple-800 hover:bg-white active:text-purple-800 active:bg-white"  to="/">Home</Link>
+        <Link className="py-[10px] block text-white hover:text-purple-800 hover:bg-white active:text-purple-800 active:bg-white"  to="/home">Home</Link>
         <Link className="py-[10px] block text-white hover:text-purple-800 hover:bg-white active:text-purple-800 active:bg-white"  to="/about">About</Link>
         <Link className="py-[10px] block text-white hover:text-purple-800 hover:bg-white active:text-purple-800 active:bg-white"  to="/blog">Blog</Link>
         <Link className="py-[10px] block text-white hover:text-purple-800 hover:bg-white active:text-purple-800 active:bg-white"  to="/contact">Contact</Link>
