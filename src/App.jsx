@@ -8,7 +8,7 @@ import About from './Pages/About/About'
 import Contact from './Pages/Contact/Contact'
 import Home from './Pages/Home/Home'
 import { BrowserRouter,Routes,Route } from 'react-router'
-import ModalBox from './Components/Modal'
+// import ModalBox from './Components/Modal'
 import SignupForm from './Pages/SignUp/index'
 import LoginForm from './Pages/Login/index'
 import Profile from './Pages/Profile'
@@ -31,7 +31,7 @@ function App() {
          <Route path='/profile' element={<Profile/>} />
          <Route path='/about' element={<About/>} />
          <Route path='/contact' element={<Contact/>} />
-         <Route path='/modal' element={<ModalBox/>} />
+         {/* <Route path='/modal' element={<ModalBox/>} /> */}
 
        </Routes>
      
