@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import { useState } from "react";
 import Navbar from "../../Components/Navbar";
 import { db } from "../../services/firebase";
@@ -27,6 +27,7 @@ const Profile = () => {
     setLoginUserID(userID);
     console.log('121',loginUserID);
     console.log('useEffect [] 23');
+    console.log('[] use effect of profile');
   }, []); // ✅ Empty dependency array means sirf ek dafa run hoga
 
   // console.log(loginUserID, '<=== 26');
@@ -72,6 +73,8 @@ getUser();
 
 
   // console.log('124',loginUser);
+
+  
 
 
   //handleChange

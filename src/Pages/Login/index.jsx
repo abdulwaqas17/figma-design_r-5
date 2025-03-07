@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../services/firebase";
 
+
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,9 +33,14 @@ const LoginForm = () => {
             console.log("u of then ", u);
             u.forEach((doc) => {
               if (doc.data().email == formData.email) {
-                //  console.log( doc.data());
+                 console.log('doc.data() 36 line', doc.data());
                 console.log(doc.id);
+
+
+                
                 window.localStorage.setItem("LoginUserID", doc.id);
+                window.localStorage.setItem("LoginUserData", JSON.stringify(doc.data()));
+                
               }
               // console.log(doc.id, doc.data().email); // ✅ Ye sahi tarika hai
             });
@@ -55,7 +61,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-purple-900">
+    
+
+<div className="flex justify-center items-center min-h-screen bg-purple-900">
       <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
         <div className="flex justify-between mb-6">
           <Link
@@ -104,6 +112,7 @@ const LoginForm = () => {
         </form>
       </div>
     </div>
+
   );
 };
 

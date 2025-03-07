@@ -12,6 +12,7 @@ import { BrowserRouter,Routes,Route } from 'react-router'
 import SignupForm from './Pages/SignUp/index'
 import LoginForm from './Pages/Login/index'
 import Profile from './Pages/Profile'
+import Post from './Pages/Post'
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
          <Route path='/profile' element={<Profile/>} />
          <Route path='/about' element={<About/>} />
          <Route path='/contact' element={<Contact/>} />
-         {/* <Route path='/modal' element={<ModalBox/>} /> */}
+         <Route path='/post' element={<Post/>} />
 
        </Routes>
      

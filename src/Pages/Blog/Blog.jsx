@@ -154,7 +154,8 @@ const Blog = () => {
           {console.log(posts.length)}
           {posts.length > 0 && (
             posts.map((p)=>{
-             return(
+             return( 
+          
               <Cart
               detail={
                 <p className="font-bold">
@@ -165,7 +166,12 @@ const Blog = () => {
               para={p.description}
       
               imgLink = {p.image}
+
+              id = {p.id}
+
+
             />
+         
             // console.log(posts);
              )
             })
