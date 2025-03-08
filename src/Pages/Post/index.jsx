@@ -12,7 +12,7 @@ const Post = () => {
     const [postData,setPostData] = useState(null);
     // const [authorData,setAuthorData] = useState(null);
 
-    let authorData = JSON.parse(window.localStorage.getItem('LoginUserData'));
+    // let authorData = JSON.parse(window.localStorage.getItem('LoginUserData'));
     // console.log(authorData);
 
     // console.log('aaaa');
@@ -27,7 +27,7 @@ const Post = () => {
 
     },[])
 
-      // use effcet which run when postID update
+      // use effcet which run when postID update, Get the data of post
     useEffect(()=> {
 
       console.log('in the 1 effect postDataID',postDataID);
@@ -41,6 +41,7 @@ const Post = () => {
         if(data.exists()){
           setPostData(data.data())
           console.log('post data ===>',data.data());
+          console.log('post data ===>',data.id);
         }else{
           console.log('post not found');
         }
@@ -52,7 +53,7 @@ const Post = () => {
     })
 
      }else {
-      setPostData('')
+      // setPostData('')
       console.log('This blog could not show ');
      }
 
@@ -95,17 +96,7 @@ const Post = () => {
   //     // }
   // });
 
-    // console.log('ccccccccc');
-
-   
-
-
-    
-
-
-
-
-    // console.log(authorData);
+  
 
   return (
     <>
@@ -182,10 +173,10 @@ const Post = () => {
             className="w-16 h-16 rounded-full border-2 border-purple-600"
           />
           <div>
-            <h2 className="text-xl font-bold text-gray-800">{authorData.fullname}</h2>
-            <p className="text-gray-600 text-sm">{authorData.dob}</p>
-            <p className="text-gray-600 text-sm">{authorData.email}</p>
-            <p className="text-gray-600 text-sm">{authorData.country}</p>
+            <h2 className="text-xl font-bold text-gray-800">{postData !== null ? postData.authorDetails.fullname : ''}</h2>
+            <p className="text-gray-600 text-sm">{postData !== null ? postData.authorDetails.dob : ''}</p>
+            <p className="text-gray-600 text-sm">{postData !== null ? postData.authorDetails.email : ''}</p>
+            <p className="text-gray-600 text-sm">{postData !== null ? postData.authorDetails.country : ''}</p>
           </div>
         </div>
       </div>

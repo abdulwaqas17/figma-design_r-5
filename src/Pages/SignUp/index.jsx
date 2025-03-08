@@ -16,7 +16,7 @@ const SignupForm = () => {
     education: "",
     country: "",
     dob: "",
-    posts:[1,2,3,'abc',9]
+    posts:[]
   
   });
 

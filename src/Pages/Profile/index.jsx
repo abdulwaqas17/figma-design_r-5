@@ -2,26 +2,26 @@ import React, { useEffect,useContext } from "react";
 import { useState } from "react";
 import Navbar from "../../Components/Navbar";
 import { db } from "../../services/firebase";
-import { doc , getDoc ,addDoc,collection} from "firebase/firestore";
+import { doc , getDoc ,addDoc,setDoc,collection} from "firebase/firestore";
 import { useNavigate } from "react-router";
 
 
 const Profile = () => {
 
+  // const authorData = JSON.parse(window.localStorage.getItem('LoginUserData'))
+  // console.log(authorData);
+
   const navigate = useNavigate();
 
-  const [blog, setBlog] = useState({
-    title: "",
-    author: "",
-    image: "",
-    description: "",
-  });
-  
   const [loginUserID,setLoginUserID] = useState(null);
   const [loginUser,setLoginUser] = useState('');
 
+ 
+  
 
-  // 1st use effect jo srif first time chaly ga
+
+
+  // 1st use effect jo srif first time chaly ga, user id ls se le kr set kr rha h
   useEffect(() => {
     const userID = window.localStorage.getItem("LoginUserID");
     setLoginUserID(userID);
@@ -30,27 +30,24 @@ const Profile = () => {
     console.log('[] use effect of profile');
   }, []); // ✅ Empty dependency array means sirf ek dafa run hoga
 
-  // console.log(loginUserID, '<=== 26');
+ 
 
 
-  // second use effet jo loginUserID change honay k bad chaly ga
+  // second use effet jo loginUserID change honay k bad chaly ga, Get Login User Data
   useEffect(()=>{
 
-    console.log('in the 2 effect',loginUserID);
+    
 
-    // get the specice obj 
+    // get the specice obj of login user
   const getUser = async ()=> {
 
-  console.log('in the func',loginUserID);
+ 
 
   if (loginUserID !== null) {
     try {
     
       const userRef = doc(db, 'users', loginUserID);
       const desireObj = await getDoc(userRef);
-  
-  
-      console.log('in the try',loginUserID);
   
       if (desireObj.exists()) {
         console.log("User Data:", desireObj.data()); // ✅ Document ka data mil gaya
@@ -72,30 +69,58 @@ getUser();
   },[loginUserID]);
 
 
-  // console.log('124',loginUser);
-
+ 
+  const [blog, setBlog] = useState({
+    title: "",
+    image: "",
+    description: "",
+    authorDetails : '',
+    authorID : ''
+  });
   
+  console.log(blog);
+  console.log(loginUser);
+  console.log(loginUser.posts);
+  console.log(loginUser.posts.length);
+  console.log(blog);
 
 
-  //handleChange
+  //handleChange for inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBlog({ ...blog, [name]: value });
+    setBlog({ ...blog, [name]: value , authorDetails : loginUser , authorID : loginUserID});
   };
 
 
-  // handleSubmit
+  // handleSubmit, push the post data in the firestore and also update user data
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(blog);
 
     const postsRef = collection(db,'posts');
-    const blogData = await addDoc(postsRef,blog).then((e)=>{
+    const blogData = await addDoc(postsRef,blog).then(async (e)=>{
 
-      // console.log(blogData);
-      console.log(e);
+      // console.log(e);
+      // console.log(e.id);
+      let myAutherObj = loginUser;
+      // console.log(myAutherObj);
+      // console.log(myAutherObj.posts);
+      myAutherObj.posts.push(e.id)
+      // console.log(myAutherObj);
+
+
+      // re assign user data for updation of number of post
+      try{
+
+        await setDoc(doc(db,'users',loginUserID), myAutherObj)
+
+      } catch(err) {
+        alert(err)
+      }
+
+
       alert('your post created successfully');
-      navigate('/blog')
+      // navigate('/blog')
 
     }).catch((c)=>{
       console.log(c);
@@ -104,14 +129,17 @@ getUser();
 
   };
 
+ 
+
 
   const cancel = ()=> {
 
     setBlog({
       title: "",
-      author: "",
       image: "",
       description: "",
+      authorDetails : '' ,
+      authorID : ''
     })
   }
 
@@ -136,6 +164,8 @@ getUser();
           <p className="text-center text-gray-600">{loginUser.email}</p>
           <p className="text-center text-gray-600">{loginUser.country}</p>
           <p className="text-center text-gray-600">{loginUser.dob}</p>
+          <p className="text-center text-gray-600">No. of Blog writes : {loginUser.posts.length}</p>
+
           <div className="mt-4 flex justify-center gap-4">
             <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Edit Profile</button>
             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">Logout</button>
@@ -146,26 +176,22 @@ getUser();
         <div className="bg-white p-6 rounded-2xl shadow-lg w-full md:w-2/3">
           <h2 className="text-2xl font-semibold text-purple-600 mb-4">Create a Blog</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-              type="text"
-              name="author"
-              placeholder="Author Name"
-              value={blog.author}
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-md"
-            />
+      
             <input
               type="text"
+              required
               name="title"
               placeholder="Blog Title"
               value={blog.title}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md"
-              maxLength='50'
+              maxLength='30'
+              minLength='5'
             />
          
             <input
               type="text"
+              required
               name="image"
               placeholder="vaild image url"
               value={blog.image}
@@ -174,6 +200,7 @@ getUser();
               
             />
             <textarea
+              required
               name="description"
               placeholder="Blog Description"
               value={blog.description}
@@ -181,6 +208,7 @@ getUser();
               className="w-full p-2 border border-gray-300 rounded-md"
               rows="4"
               maxLength= '145'
+              minLength='10'
             ></textarea>
             <div className="flex gap-4">
               <button className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-md" onClick={cancel}>Cancel</button>
