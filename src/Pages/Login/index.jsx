@@ -34,19 +34,17 @@ const LoginForm = () => {
             u.forEach((doc) => {
               if (doc.data().email == formData.email) {
                  console.log('doc.data() 36 line', doc.data());
-                console.log(doc.id);
-
-
-                
+                console.log(doc.id);          
                 window.localStorage.setItem("LoginUserID", doc.id);
-                window.localStorage.setItem("LoginUserData", JSON.stringify(doc.data()));
+                alert('go to home page');
+                navigate('/home');
+                // window.localStorage.setItem("LoginUserData", JSON.stringify(doc.data()));
                 
               }
               // console.log(doc.id, doc.data().email); // ✅ Ye sahi tarika hai
             });
 
-            alert('go to home page');
-            navigate('/home');
+           
            
           })
           .catch((c) => {

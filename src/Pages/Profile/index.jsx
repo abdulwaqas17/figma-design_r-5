@@ -4,6 +4,8 @@ import Navbar from "../../Components/Navbar";
 import { db } from "../../services/firebase";
 import { doc , getDoc ,addDoc,setDoc,collection} from "firebase/firestore";
 import { useNavigate } from "react-router";
+import PostTagline from "../../Components/PostTagline";
+import Cart from "../../Components/Cart";
 
 
 const Profile = () => {
@@ -14,7 +16,8 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const [loginUserID,setLoginUserID] = useState(null);
-  const [loginUser,setLoginUser] = useState('');
+  const [loginUser,setLoginUser] = useState(null);
+  const [userPosts,setUserPosts] = useState(null);
 
  
   
@@ -80,8 +83,8 @@ getUser();
   
   console.log(blog);
   console.log(loginUser);
-  console.log(loginUser.posts);
-  console.log(loginUser.posts.length);
+  // console.log(loginUser.posts);
+  // console.log(loginUser.posts.length);
   console.log(blog);
 
 
@@ -145,14 +148,54 @@ getUser();
 
 
 
+  let authorAllPosts = []
+  // let cartItems = [];
+  if (loginUser) {
+    loginUser.posts.map((i)=> {
 
 
+      getDoc(doc(db,'posts',i)).then((d)=> {
+        console.log(d);
+        console.log(d.data());
+        authorAllPosts.push(d.data());    
+        console.log(authorAllPosts);
+        
+        
+      }).catch((c)=> {
+        console.log(c);
+      })
+
+      // if(authorAllPosts) {
+
+      //   cartItems =  authorAllPosts.map((p)=> {
+      //     return (
+      //       <Cart heading ={p.title} para={p.description} imgLink={p.image}/>
+      //     )
+        
+      //   })
+
+      //   // setUserPosts(cartItems);
+
+
+      // }
+
+}) 
+
+
+}  
+
+console.log(authorAllPosts);
+// if(cartItems) {
+//   setUserPosts(cartItems);
+// }
+
+// console.log(userPosts);
   
   return (
     <div>
         <Navbar />
-        <div className="min-h-screen flex flex-col bg-gray-100">
-      <div className="flex flex-col md:flex-row p-6 gap-6">
+        <div className="min-h-screen flex flex-col bg-gray-100 p-6">
+      <div className="flex flex-col md:flex-row  gap-6">
         {/* User Info Section */}
         <div className="bg-white p-6 rounded-2xl shadow-lg w-full md:w-1/3">
           <img
@@ -160,11 +203,11 @@ getUser();
             alt="Profile"
             className="w-[170px] h-[170px] mx-auto rounded-full mb-4 border-5 border-purple-950"
           />
-          <h2 className="text-center text-lg font-semibold">{loginUser.fullname}</h2>
-          <p className="text-center text-gray-600">{loginUser.email}</p>
-          <p className="text-center text-gray-600">{loginUser.country}</p>
-          <p className="text-center text-gray-600">{loginUser.dob}</p>
-          <p className="text-center text-gray-600">No. of Blog writes : {loginUser.posts.length}</p>
+          <h2 className="text-center text-lg font-semibold">{loginUser ? loginUser.fullname : ''}</h2>
+          <p className="text-center text-gray-600">{loginUser ? loginUser.email : ''}</p>
+          <p className="text-center text-gray-600">{loginUser ? loginUser.country : ''}</p>
+          <p className="text-center text-gray-600">{loginUser ? loginUser.dob : ''}</p>
+          <p className="text-center text-gray-600">No. of Blog writes : {loginUser ? loginUser.posts.length : ''}</p>
 
           <div className="mt-4 flex justify-center gap-4">
             <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Edit Profile</button>
@@ -218,6 +261,40 @@ getUser();
             </div>
           </form>
         </div>
+      </div>
+
+      <PostTagline postValue = 'Your Blogs' />
+
+      <div className=' flex justify-between flex-wrap gap-[40px]'>
+
+{/* {console.log(authorAllPosts)}
+
+        {authorAllPosts ? (
+
+
+    authorAllPosts.map((p)=> {
+  return (
+    <Cart heading ={p.title} para={p.description} imgLink={p.image}/>
+  )
+})
+    
+              )      : 'You did not write any blog'
+      } */}
+      {console.log(authorAllPosts)}
+
+{authorAllPosts && authorAllPosts.length > 0 ? (
+  authorAllPosts.map((p, index) => (
+    <Cart 
+      key={index}
+      heading={p.title} 
+      para={p.description} 
+      imgLink={p.image} 
+    />
+  ))
+) : (
+  'You did not write any blog'
+)}
+
       </div>
     </div>
     </div>

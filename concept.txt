@@ -1,0 +1,39 @@
+@@@@@@@@@@@@@@@@@@@@@@@@ REACT EXECUTION FLOW @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+1️⃣ Component Function Execute Hoti Hai  
+2️⃣ Variables & Hooks Initialize Hote Hain (useState, useRef, etc.)  
+3️⃣ JSX (return ka part) Evaluate Hota Hai  
+4️⃣ React DOM Update Karta Hai  
+5️⃣ useEffect() Render ke Baad Execute Hota Hai  
+6️⃣ Event Listeners aur State Update hoti hai (Agar koi event ho)  
+7️⃣ Component Re-render hota hai (Agar State Change hui ho)  
+
+
+
+
+
+
+***************************** REACT EXECUTION FLOW IN DETAIL ****************************************
+🔄 React Component Execution Flow (Step-by-Step)
+
+1️⃣ Component Function Execute Hoti Hai
+
+React component function run hota hai.
+2️⃣ Variables & Hooks Initialize Hote Hain
+
+useState(), useRef(), aur useMemo() jaise hooks run hote hain.
+3️⃣ JSX (return ka part) Evaluate Hota Hai
+
+return wala JSX evaluate hota hai, lekin DOM me tab apply hota hai jab render complete ho jaye.
+4️⃣ React DOM Update Karta Hai
+
+React virtual DOM ke hisaab se UI update karta hai.
+5️⃣ useEffect() Execute Hota Hai (Render ke Baad)
+
+useEffect() ka first run hota hai, agar dependencies change hui hain ya pehli dafa render ho raha hai.
+6️⃣ Event Listeners & State Update (Agar koi action ho)
+
+Agar user koi button click kare ya koi event ho jo setState() se state change kare, to component dubara render hota hai.
+7️⃣ Component Re-render Hota Hai (Agar State Change Hui Ho)
+
+Steps 1 se 5 tak phir repeat hote hain, lekin useEffect sirf tab chalega jab dependencies change hongi.
