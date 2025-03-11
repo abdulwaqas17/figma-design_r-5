@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between md:px-15 px-[20px] py-4">
       <div className="logo">
-        <Link to="/">
+        <Link to="/home">
           <img src="/assets/figma-9.jpg" alt="logo" className="w-[70px] md:w-[150px]"/>
         </Link>
 
