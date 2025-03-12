@@ -61,7 +61,7 @@ const SignupForm = () => {
       <div className="bg-gray-100 bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
         <div className="flex justify-center gap-[40px] mb-6">
           <Link
-            to="/"
+            to="/signup"
             className="px-[20px] py-[10px] md:text-xl text-center text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-[5px]"
           >
             Sign Up

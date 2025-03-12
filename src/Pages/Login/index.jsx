@@ -37,7 +37,7 @@ const LoginForm = () => {
                 console.log(doc.id);          
                 window.localStorage.setItem("LoginUserID", doc.id);
                 alert('go to home page');
-                navigate('/home');
+                navigate('/');
                 // window.localStorage.setItem("LoginUserData", JSON.stringify(doc.data()));
                 
               }
@@ -65,7 +65,7 @@ const LoginForm = () => {
       <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
         <div className="flex justify-between mb-6">
           <Link
-            to="/"
+            to="/signup"
             className="w-1/2 p-2 text-center bg-purple-700 rounded-l-lg"
           >
             Sign Up

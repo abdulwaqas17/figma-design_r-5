@@ -68,6 +68,7 @@ const Profile = () => {
 
             authorAllPosts.push(
               <Cart
+                id = {d.id}
                 heading={dataOfPost.title}
                 para={dataOfPost.description}
                 imgLink={dataOfPost.image}

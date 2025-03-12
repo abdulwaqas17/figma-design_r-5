@@ -6,13 +6,14 @@ const Cart = (thisAnObj) => {
   const [myPostID,setMyPostID] = useState(null);
   const navigate = useNavigate();
 
-  const postFunc = ()=> {
+  const postFunc = (param)=> {
 
-    console.log('thisAnObj.id ==>',thisAnObj.id);
-    window.localStorage.setItem('postID',thisAnObj.id)
-
+    // console.log('thisAnObj.id ==>',thisAnObj.id);
+    
     // setMyPostID(thisAnObj.id);
-    if (thisAnObj.id !== null && thisAnObj.id !== undefined) {
+    if (param !== null && param !== undefined) {
+      window.localStorage.setItem('postID',param);
+      console.log('switch');
       navigate('/post');
     } else{
       alert('This blog could not show')
@@ -21,18 +22,20 @@ const Cart = (thisAnObj) => {
   }
 
   return (
-    <div className="threeBoxesBox w-full md:w-[30%]" id={thisAnObj.id}>
+    <div className="threeBoxesBox w-full md:w-[30%] bg-white rounded-[10px]" id={thisAnObj.id}>
 
       <img src={thisAnObj.imgLink} alt="" className="w-full mb-4 rounded-[10px]" />
       {/* <div className="img h-[300px] bg-orange-500 mb-4 rounded-[10px]"></div> */}
 
-      {thisAnObj.detail}
+     <div className="px-[15px] pb-[15px]">
+     {thisAnObj.detail}
 
-      <h2 className="font-bold text-2xl pt-4">{thisAnObj.heading}</h2>
+<h2 className="font-bold text-2xl pt-4">{thisAnObj.heading}</h2>
 
-      <p className="py-4">{thisAnObj.para}</p>
+<p className="py-4">{thisAnObj.para}</p>
 
-      <p className="text-purple-900 text-xl font-bold" onClick={postFunc}>View Post ...</p>
+<p className="text-purple-900 text-xl font-bold cursor-pointer" onClick={()=> postFunc(thisAnObj.id)}>View Blog ...</p>
+     </div>
 
     </div>
   );
