@@ -24,7 +24,7 @@ const Cart = (thisAnObj) => {
   return (
     <div className="threeBoxesBox w-full md:w-[30%] bg-white rounded-[10px]" id={thisAnObj.id}>
 
-      <img src={thisAnObj.imgLink} alt="" className="w-full mb-4 rounded-[10px]" />
+      <img src={thisAnObj.imgLink} alt="" className="w-full mb-4 rounded-[10px] h-[260px] md:h-[330px]"  />
       {/* <div className="img h-[300px] bg-orange-500 mb-4 rounded-[10px]"></div> */}
 
      <div className="px-[15px] pb-[15px]">

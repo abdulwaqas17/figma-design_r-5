@@ -13,6 +13,7 @@ import { useNavigate } from "react-router";
 // import MyModal from "../../Components/demo";
 import { addDoc, collection ,getDocs} from "firebase/firestore";
 import { db } from "../../services/firebase";
+import PostTagline from "../../Components/PostTagline";
 // import BlogModal from "../../Components/Modal";
 // import { motion, AnimatePresence } from "framer-motion";
 // import './../App.css'
@@ -147,6 +148,8 @@ const Blog = () => {
           <ThreeCarts />
         </div>
 
+        <PostTagline postValue= "Author's Posts"/>
+
         <div className="threeBoxes flex justify-between flex-wrap gap-[40px] mt-[40px]">
 
 
@@ -157,17 +160,19 @@ const Blog = () => {
              return( 
           
               <Cart
-              detail={
-                <p className="font-bold">
-                  Travel10 <span className="font-normal text-gray-700">jan 2025</span>
-                </p>
-              }
+              
               heading={p.title}
               para={p.description}
       
               imgLink = {p.image}
 
               id = {p.id}
+
+              detail={
+                <p className="font-bold">
+                  By {p.authorDetails.fullname} <span className="font-normal pl-[17px] text-gray-700">{p.postDate}</span>
+                </p>
+              }
 
 
             />

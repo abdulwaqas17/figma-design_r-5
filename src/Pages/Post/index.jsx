@@ -220,6 +220,11 @@ const Post = () => {
               heading={authorPost.title}
               para={authorPost.description}
               imgLink={authorPost.image}
+              detail={
+                <p className="font-bold">
+                  By {authorPost.authorDetails.fullname} <span className="font-normal pl-[17px] text-gray-700">{authorPost.postDate}</span>
+                </p>
+              }
             />
           );
         }
@@ -327,7 +332,7 @@ const Post = () => {
         {postData ? (
 
 <div>
-<PostTagline postValue={`${postData.authorDetails.fullname}' Posts`} />
+<PostTagline postValue={`${postData.authorDetails.fullname}'s Posts`} />
 
 <div className=" flex justify-between flex-wrap gap-[40px]" >
 {authorPosts && authorPosts.length > 0 ? (
@@ -344,7 +349,7 @@ const Post = () => {
 
 
 
-        ) : 'Hello'}
+        ) : 'Data not found'}
       </div>
     </div>
     </>

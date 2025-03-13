@@ -1,12 +1,13 @@
 import React, { useEffect, useContext } from "react";
 import { useState } from "react";
 import Navbar from "../../Components/Navbar";
-import { db } from "../../services/firebase";
+import { db , auth} from "../../services/firebase";
 import { doc, getDoc, addDoc, setDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
 import PostTagline from "../../Components/PostTagline";
 import Cart from "../../Components/Cart";
-import { sync } from "framer-motion";
+import { signOut } from "firebase/auth";
+
 
 const Profile = () => {
   // const authorData = JSON.parse(window.localStorage.getItem('LoginUserData'))
@@ -72,6 +73,11 @@ const Profile = () => {
                 heading={dataOfPost.title}
                 para={dataOfPost.description}
                 imgLink={dataOfPost.image}
+                detail={
+                  <p className="font-bold">
+                    By {dataOfPost.authorDetails.fullname}, <span className="font-normal pl-[17px] text-gray-700">{dataOfPost.postDate}</span>
+                  </p>
+                }
               />
             );
 
@@ -111,6 +117,7 @@ const Profile = () => {
     title: "",
     image: "",
     description: "",
+    postDate : "",
     authorDetails: "",
     authorID: "",
   });
@@ -123,14 +130,31 @@ const Profile = () => {
 
   //handleChange for inputs
   const handleChange = (e) => {
+
     const { name, value } = e.target;
+    const postDate = new Date();
+    const formattedDate = postDate.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+    console.log(formattedDate); // Output: May 13 2025 (if today is May 13, 2025)
+
     setBlog({
       ...blog,
       [name]: value,
       authorDetails: loginUser,
       authorID: loginUserID,
+      postDate : formattedDate
     });
+
+    console.log(blog);
   };
+
+  // const postDate = new Date;
+  // console.log(postDate);
+
+
 
   // handleSubmit, push the post data in the firestore and also update user data
   const handleSubmit = async (e) => {
@@ -214,6 +238,22 @@ const Profile = () => {
 
   // console.log(userPosts);
 
+  const onLogout = ()=> {
+
+    signOut(auth).then(()=>{
+
+        alert('Log out Successfully');
+        window.localStorage.setItem('LoginUserID',null)
+        navigate('/signup')
+
+    }).catch((e)=>{
+
+        alert(e);
+        console.log(e);
+
+    })
+}
+
   return (
     <div>
       <Navbar />
@@ -243,10 +283,10 @@ const Profile = () => {
             </p>
 
             <div className="mt-4 flex justify-center gap-4">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
+              <button className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-4 py-2 rounded-md">
                 Edit Profile
               </button>
-              <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">
+              <button onClick={onLogout} className="bg-red-500 cursor-pointer hover:bg-red-600 text-white px-4 py-2 rounded-md">
                 Logout
               </button>
             </div>

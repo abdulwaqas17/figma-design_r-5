@@ -5,7 +5,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../services/firebase";
 
-
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,39 +18,23 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Form Data Submitted:", formData);
     await signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then(async (userCredential) => {
-        //sign in successfully
-        console.log(userCredential);
-        console.log(userCredential.user);
-
-        alert("sign in successfully");
+        alert("Sign in successfully");
 
         let usersData = await getDocs(collection(db, "users"))
           .then((u) => {
-            console.log("u of then ", u);
             u.forEach((doc) => {
-              if (doc.data().email == formData.email) {
-                 console.log('doc.data() 36 line', doc.data());
-                console.log(doc.id);          
+              if (doc.data().email === formData.email) {
                 window.localStorage.setItem("LoginUserID", doc.id);
-                alert('go to home page');
-                navigate('/');
-                // window.localStorage.setItem("LoginUserData", JSON.stringify(doc.data()));
-                
+                alert("Go to home page");
+                navigate("/");
               }
-              // console.log(doc.id, doc.data().email); // ✅ Ye sahi tarika hai
             });
-
-           
-           
           })
           .catch((c) => {
             alert(c);
           });
-
-        // console.log('userData ',usersData);
       })
       .catch((c) => {
         alert(c);
@@ -59,20 +42,18 @@ const LoginForm = () => {
   };
 
   return (
-    
-
-<div className="flex justify-center items-center min-h-screen bg-purple-900">
-      <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
-        <div className="flex justify-between mb-6">
+    <div className="flex justify-center items-center min-h-screen bg-purple-900">
+      <div className="bg-gray-100 bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
+        <div className="flex justify-center gap-[40px] mb-6">
           <Link
             to="/signup"
-            className="w-1/2 p-2 text-center bg-purple-700 rounded-l-lg"
+            className="px-[20px] py-[10px] md:text-xl text-center text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-[5px]"
           >
             Sign Up
           </Link>
           <Link
             to="/signin"
-            className="w-1/2 p-2 text-center bg-purple-500 rounded-r-lg"
+            className="px-[20px] py-[10px] md:text-xl text-center  text-white bg-purple-800 transition-all rounded-[5px]"
           >
             Sign In
           </Link>
@@ -84,7 +65,7 @@ const LoginForm = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-black"
+            className="w-full p-2 focus:border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-black"
             required
           />
           <input
@@ -93,24 +74,23 @@ const LoginForm = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-black"
+            className="w-full p-2 focus:border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-black"
             required
           />
 
           <div className="flex items-center">
             <input type="checkbox" id="remember" className="mr-2" />
-            <label htmlFor="remember">Accept terms and conditions</label>
+            <label htmlFor="remember" className="text-black">Remember me</label>
           </div>
           <button
             type="submit"
-            className="w-full bg-purple-700 text-white p-2 rounded-md hover:bg-purple-800 transition"
+            className="w-full cursor-pointer bg-purple-700 text-white p-2 rounded-md hover:bg-purple-800 transition"
           >
             Sign in
           </button>
         </form>
       </div>
     </div>
-
   );
 };
 
