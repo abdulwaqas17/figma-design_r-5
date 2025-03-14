@@ -96,36 +96,27 @@ const About = () => {
 
           <div className="flex justify-between flex-wrap gap-[40px]">
             <Cart
-              detail={
-                <p className="font-bold">
-                  Travel10{" "}
-                  <span className="font-normal text-gray-700">jan 2025</span>
-                </p>
-              }
+              authorName="Blog Website"
+        postDate="May 13, 2025"
+              
               heading="Train Or Bus? Journey Which One Suit"
               para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
               imgLink="/assets/figma-3.jpg"
             />
 
             <Cart
-              detail={
-                <p className="font-bold">
-                  Travel10{" "}
-                  <span className="font-normal text-gray-700">jan 2025</span>
-                </p>
-              }
+              authorName="Blog Website"
+        postDate="May 13, 2025"
+              
               heading="Best Website to reserch for your new Job"
               para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
               imgLink="/assets/figma-2.jpg"
             />
 
             <Cart
-              detail={
-                <p className="font-bold">
-                  Travel10{" "}
-                  <span className="font-normal text-gray-700">jan 2025</span>
-                </p>
-              }
+              authorName="Blog Website"
+        postDate="May 13, 2025"
+              
               heading="How to be a Dancer in 2025 With Popuar skills"
               para="Lorem ipsum dolor sit amet consectetur labore amet incidunt numquam illum. Consequuntur aspernatur expedita repellendus asperiores maxime."
               imgLink="/assets/figma-1.jpg"

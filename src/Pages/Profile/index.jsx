@@ -1,13 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { useState } from "react";
 import Navbar from "../../Components/Navbar";
-import { db , auth} from "../../services/firebase";
+import { db, auth } from "../../services/firebase";
 import { doc, getDoc, addDoc, setDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router";
 import PostTagline from "../../Components/PostTagline";
 import Cart from "../../Components/Cart";
 import { signOut } from "firebase/auth";
-
 
 const Profile = () => {
   // const authorData = JSON.parse(window.localStorage.getItem('LoginUserData'))
@@ -69,15 +68,13 @@ const Profile = () => {
 
             authorAllPosts.push(
               <Cart
-                id = {d.id}
+                id={d.id}
                 heading={dataOfPost.title}
                 para={dataOfPost.description}
                 imgLink={dataOfPost.image}
-                detail={
-                  <p className="font-bold">
-                    By {dataOfPost.authorDetails.fullname}, <span className="font-normal pl-[17px] text-gray-700">{dataOfPost.postDate}</span>
-                  </p>
-                }
+                authorName={dataOfPost.authorDetails.fullname}
+                postDate={dataOfPost.postDate}
+              
               />
             );
 
@@ -117,7 +114,7 @@ const Profile = () => {
     title: "",
     image: "",
     description: "",
-    postDate : "",
+    postDate: "",
     authorDetails: "",
     authorID: "",
   });
@@ -130,7 +127,6 @@ const Profile = () => {
 
   //handleChange for inputs
   const handleChange = (e) => {
-
     const { name, value } = e.target;
     const postDate = new Date();
     const formattedDate = postDate.toLocaleDateString("en-US", {
@@ -145,7 +141,7 @@ const Profile = () => {
       [name]: value,
       authorDetails: loginUser,
       authorID: loginUserID,
-      postDate : formattedDate
+      postDate: formattedDate,
     });
 
     console.log(blog);
@@ -153,8 +149,6 @@ const Profile = () => {
 
   // const postDate = new Date;
   // console.log(postDate);
-
-
 
   // handleSubmit, push the post data in the firestore and also update user data
   const handleSubmit = async (e) => {
@@ -180,7 +174,7 @@ const Profile = () => {
         }
 
         alert("your post created successfully");
-        navigate('/blog');
+        navigate("/blog");
       })
       .catch((c) => {
         console.log(c);
@@ -238,59 +232,60 @@ const Profile = () => {
 
   // console.log(userPosts);
 
-  const onLogout = ()=> {
-
-    signOut(auth).then(()=>{
-
-        alert('Log out Successfully');
-        window.localStorage.setItem('LoginUserID',null)
-        navigate('/signup')
-
-    }).catch((e)=>{
-
+  const onLogout = () => {
+    signOut(auth)
+      .then(() => {
+        alert("Log out Successfully");
+        window.localStorage.setItem("LoginUserID", null);
+        navigate("/signup");
+      })
+      .catch((e) => {
         alert(e);
         console.log(e);
-
-    })
-}
+      });
+  };
 
   return (
     <div>
       <Navbar />
       <div className="min-h-screen flex flex-col bg-gray-100 p-6">
         <div className="flex flex-col md:flex-row  gap-6">
-          {/* User Info Section */}
-          <div className="bg-white p-6 rounded-2xl shadow-lg w-full md:w-1/3">
-            <img
-              src="https://wallpapers.com/images/hd/contact-profile-icon-orange-background-r9rxk5644r2zxpzj.png"
-              alt="Profile"
-              className="w-[170px] h-[170px] mx-auto rounded-full mb-4 border-5 border-purple-950"
-            />
-            <h2 className="text-center text-lg font-semibold">
-              {loginUser ? loginUser.fullname : ""}
-            </h2>
-            <p className="text-center text-gray-600">
-              {loginUser ? loginUser.email : ""}
-            </p>
-            <p className="text-center text-gray-600">
-              {loginUser ? loginUser.country : ""}
-            </p>
-            <p className="text-center text-gray-600">
-              {loginUser ? loginUser.dob : ""}
-            </p>
-            <p className="text-center text-gray-600">
-              No. of Blog writes : {loginUser ? loginUser.posts.length : ""}
-            </p>
+     {/* User Info Section */}
+<div className="bg-white p-8 rounded-2xl shadow-lg w-full md:w-1/3 flex flex-col items-center text-center">
+  <img
+    src="https://wallpapers.com/images/hd/contact-profile-icon-orange-background-r9rxk5644r2zxpzj.png"
+    alt="Profile"
+    className="w-40 h-40 rounded-full border-4 border-purple-600 shadow-md mb-4"
+  />
+  
+  <h2 className="text-2xl font-bold text-gray-900">
+    {loginUser ? loginUser.fullname : "Unknown User"}
+  </h2>
+  
+  <p className="text-gray-500">{loginUser ? loginUser.email : "No Email"}</p>
 
-            <div className="mt-4 flex justify-center gap-4">
-              <button className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-4 py-2 rounded-md">
-                Edit Profile
-              </button>
-              <button onClick={onLogout} className="bg-red-500 cursor-pointer hover:bg-red-600 text-white px-4 py-2 rounded-md">
-                Logout
-              </button>
-            </div>
-          </div>
+  <div className="mt-4 space-y-2 text-gray-700 text-lg">
+    <p>{loginUser ? loginUser.country : "No Country"}</p>
+    <p>{loginUser ? loginUser.dob : "No DOB"}</p>
+    <p className="font-semibold text-purple-600">
+      Blogs Written: <span className=" text-purple-600">{loginUser ? loginUser.posts.length : "0"}</span>
+    </p>
+  </div>
+
+  <div className="mt-6 flex gap-4">
+    <button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-5 py-2 rounded-lg shadow">
+      Edit Profile
+    </button>
+    <button
+      onClick={onLogout}
+      className="bg-gray-900 cursor-pointer hover:bg-black text-white px-5 py-2 rounded-lg shadow"
+    >
+      Logout
+    </button>
+  </div>
+</div>
+
+
 
           {/* Blog Form Section */}
           <div className="bg-white p-6 rounded-2xl shadow-lg w-full md:w-2/3">

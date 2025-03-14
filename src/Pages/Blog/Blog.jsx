@@ -168,11 +168,9 @@ const Blog = () => {
 
               id = {p.id}
 
-              detail={
-                <p className="font-bold">
-                  By {p.authorDetails.fullname} <span className="font-normal pl-[17px] text-gray-700">{p.postDate}</span>
-                </p>
-              }
+              authorName = {p.authorDetails.fullname}
+              postDate = {p.postDate}
+
 
 
             />

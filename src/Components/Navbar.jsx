@@ -32,7 +32,7 @@ const Navbar = () => {
 
       <div className="rightNav hidden md:block">
         <ul className="flex gap-10 items-center">
-          <Link to="/signup">Sign Up</Link>
+          {/* <Link to="/signup">Sign Up</Link> */}
           <Link to="/blog">Blog</Link>
           <Link to="/about">About</Link>
           <p className="cursor-pointer" onClick={checkUser}>Profile</p>
