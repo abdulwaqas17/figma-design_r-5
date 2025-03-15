@@ -41,13 +41,13 @@ const SignupForm = () => {
         <div className="flex justify-center gap-6 mb-6">
           <Link
             to="/signup"
-            className="px-5 py-2 md:text-lg font-semibold  bg-purple-800 text-white transition-all rounded-lg shadow"
+            className="px-[20px] py-[10px] md:text-xl font-semibold  bg-purple-800 text-white transition-all rounded-[5px] shadow"
           >
             Sign Up
           </Link>
           <Link
             to="/signin"
-            className="px-5 py-2 md:text-lg font-semibold text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-lg shadow"
+            className="px-[20px] py-[10px] md:text-xl font-semibold text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-[5px] shadow"
           >
             Sign In
           </Link>

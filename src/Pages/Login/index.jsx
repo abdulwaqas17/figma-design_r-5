@@ -47,13 +47,13 @@ const LoginForm = () => {
         <div className="flex justify-center gap-[40px] mb-6">
           <Link
             to="/signup"
-            className="px-[20px] py-[10px] md:text-xl text-center text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-[5px]"
+            className="shadow px-[20px] py-[10px] md:text-xl text-center text-purple-900 bg-white hover:bg-purple-800 hover:text-white transition-all rounded-[5px]"
           >
             Sign Up
           </Link>
           <Link
             to="/signin"
-            className="px-[20px] py-[10px] md:text-xl text-center  text-white bg-purple-800 transition-all rounded-[5px]"
+            className="shadow px-[20px] py-[10px] md:text-xl text-center  text-white bg-purple-800 transition-all rounded-[5px]"
           >
             Sign In
           </Link>

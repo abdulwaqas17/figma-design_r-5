@@ -236,7 +236,7 @@ const Profile = () => {
     signOut(auth)
       .then(() => {
         alert("Log out Successfully");
-        window.localStorage.setItem("LoginUserID", null);
+        window.localStorage.removeItem("LoginUserID");
         navigate("/signup");
       })
       .catch((e) => {

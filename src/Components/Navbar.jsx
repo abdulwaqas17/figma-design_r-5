@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate , useLocation} from "react-router";
 
 const Navbar = () => {
   const [num, setNum] = useState("-100%");
   const navigate = useNavigate();
 
+  const location = useLocation(); // ✅ Get current route
+  console.log(location);
+
   const checkUser = () => {
     let isUser = window.localStorage.getItem("LoginUserID");
 
+    console.log('login id', isUser);
+
     if (isUser) {
+      console.log('login id', isUser);
       navigate("/profile");
+
     } else {
       alert("Kindly Signup First");
       navigate("/signup");
@@ -33,10 +40,12 @@ const Navbar = () => {
       <div className="rightNav hidden md:block">
         <ul className="flex gap-10 items-center">
           {/* <Link to="/signup">Sign Up</Link> */}
-          <Link to="/blog">Blog</Link>
-          <Link to="/about">About</Link>
-          <p className="cursor-pointer" onClick={checkUser}>Profile</p>
-          <Link to="/contact">
+          <Link style={{color : location.pathname == '/blog' ? 'purple' : 'black'}} to="/blog" className="relative after:content-[''] after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[3px] after:bg-purple-800 after:transition-all after:duration-500 hover:after:w-full text-[1.2rem] "
+>Blog</Link>
+          <Link style={{color : location.pathname == '/about' ? 'purple' : 'black'}} to="/about" className="relative after:content-[''] after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[3px] after:bg-purple-800 after:transition-all after:duration-500 hover:after:w-full text-[1.2rem] " >About</Link>
+
+          <p style={{color : location.pathname == '/profile' ? 'purple' : 'black'}} className="relative after:content-[''] after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[3px] after:bg-purple-800 after:transition-all after:duration-500 hover:after:w-full text-[1.2rem] cursor-pointer "  onClick={checkUser}>Profile</p>
+          <Link to="/contact" >
             <button className="bg-purple-700 cursor-pointer px-4 py-2 rounded-md font-bold text-white">
               Contact Us
             </button>
