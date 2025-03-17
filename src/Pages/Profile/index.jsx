@@ -152,33 +152,38 @@ const Profile = () => {
 
   // handleSubmit, push the post data in the firestore and also update user data
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(blog);
+ if (loginUser && loginUserID) {
+  e.preventDefault();
+  console.log(blog);
 
-    const postsRef = collection(db, "posts");
-    const blogData = await addDoc(postsRef, blog)
-      .then(async (e) => {
-        // console.log(e);
-        // console.log(e.id);
-        let myAutherObj = loginUser;
-        // console.log(myAutherObj);
-        // console.log(myAutherObj.posts);
-        myAutherObj.posts.push(e.id);
-        // console.log(myAutherObj);
+  const postsRef = collection(db, "posts");
+  const blogData = await addDoc(postsRef, blog)
+    .then(async (e) => {
+      // console.log(e);
+      // console.log(e.id);
+      let myAutherObj = loginUser;
+      // console.log(myAutherObj);
+      // console.log(myAutherObj.posts);
+      myAutherObj.posts.push(e.id);
+      // console.log(myAutherObj);
 
-        // re assign user data for updation of number of post
-        try {
-          await setDoc(doc(db, "users", loginUserID), myAutherObj);
-        } catch (err) {
-          alert(err);
-        }
+      // re assign user data for updation of number of post
+      try {
+        await setDoc(doc(db, "users", loginUserID), myAutherObj);
+      } catch (err) {
+        alert(err);
+      }
 
-        alert("your post created successfully");
-        navigate("/blog");
-      })
-      .catch((c) => {
-        console.log(c);
-      });
+      alert("your post created successfully");
+      navigate("/blog");
+    })
+    .catch((c) => {
+      console.log(c);
+    });
+ }  else {
+  alert('Kindly Sign up First');
+  navigate('/signup')
+ }
   };
 
   const cancel = () => {

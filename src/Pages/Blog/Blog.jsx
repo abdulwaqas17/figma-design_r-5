@@ -155,6 +155,7 @@ const Blog = () => {
 
 
           {console.log(posts.length)}
+          {console.log(posts)}
           {posts.length > 0 && (
             posts.map((p)=>{
              return( 
@@ -168,7 +169,7 @@ const Blog = () => {
 
               id = {p.id}
 
-              authorName = {p.authorDetails.fullname}
+              authorName = {p.authorDetails.fullname ? p.authorDetails.fullname : ''} 
               postDate = {p.postDate}
 
 
