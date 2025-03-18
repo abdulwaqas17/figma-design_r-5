@@ -251,7 +251,7 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className="md:mt-[80px]">
       <Navbar />
       <div className="min-h-screen flex flex-col bg-gray-100 p-6">
         <div className="flex flex-col md:flex-row  gap-6">

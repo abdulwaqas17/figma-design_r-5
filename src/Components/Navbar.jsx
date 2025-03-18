@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
 
     //logo ref
-    gsap.from(logoRef.current, { opacity: 0, x: -50, duration: 1, delay: 0.5 });
+    gsap.from(logoRef.current, { opacity: 0, x: -50, duration: 1, delay: 0.1 });
 
     //ul ref
     gsap.from(navRef.current, { opacity: 0, y: -20, duration: 1 });

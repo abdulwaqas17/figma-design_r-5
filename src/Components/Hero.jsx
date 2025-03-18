@@ -2,6 +2,10 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scaleOnScroll } from "../animations/gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 gsap.registerPlugin(TextPlugin); // ✅ Text animation ke liye plugin register karna zaroori hai
 
@@ -16,12 +20,8 @@ const Hero = () => {
 
   useEffect(()=> {
 
-    // img gsap 
-    gsap.fromTo(
-      imgRef.current,
-      { scale: 1, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 2, ease: "power2.out" }
-    );
+    scaleOnScroll('.fadeOutImg')
+    
 
  
 
@@ -46,14 +46,14 @@ const Hero = () => {
   console.log('hello');
 
     // handleMouseEnter img gsap
-  const handleMouseEnter = () => {
-    gsap.to(imgRef.current, { scale: 1.05, duration: 0.4, ease: "power1.out" });
-  };
+  // const handleMouseEnter = () => {
+  //   gsap.to(imgRef.current, { scale: 1.05, duration: 0.4, ease: "power1.out" });
+  // };
 
-  // handleMouseLeave img gsap
-  const handleMouseLeave = () => {
-    gsap.to(imgRef.current, { scale: 1, duration: 0.4, ease: "power1.out" });
-  };
+  // // handleMouseLeave img gsap
+  // const handleMouseLeave = () => {
+  //   gsap.to(imgRef.current, { scale: 1, duration: 0.4, ease: "power1.out" });
+  // };
 
      
     // button gsap
@@ -73,15 +73,15 @@ const Hero = () => {
           facere harum provident modi quos minima quam, culpa doloremque eaque
           molestiae et at distinctio omnis.
         </p>
-        <button ref={buttonRef} className="bg-white text-black px-[25px] py-[8px] mt-2 rounded-md text-[1rem]">
+        <button ref={buttonRef} className="bg-white text-black px-[25px]  transition-all cursor-pointer hover:bg-transparent hover:border   py-[8px] mt-2 rounded-md text-[1.1rem]">
           Read More
         </button>
       </div>
       <div className="heroRight">
-        <img ref={imgRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+        <img 
           src="/assets/figma-8.jpg"
           alt="figma img"
-          className="md:w-[800px] "
+          className="md:w-[800px] fadeOutImg"
         />
         {/* <div className="img w-[400px] h-[400px] bg-orange-500"></div> */}
       </div>

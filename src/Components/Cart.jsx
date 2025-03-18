@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { fadeUpOnScroll } from "../animations/gsap";
 
 const Cart = (thisAnObj) => {
   const [myPostID, setMyPostID] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(()=> {
+
+    fadeUpOnScroll('.myCarts')
+
+  },[])
 
   const postFunc = (param) => {
     // console.log('thisAnObj.id ==>',thisAnObj.id);
@@ -21,7 +28,7 @@ const Cart = (thisAnObj) => {
 
   return (
     <div
-      className="threeBoxesBox w-full md:w-[30%] bg-white rounded-[10px]"
+      className="myCarts w-full md:w-[30%] bg-white rounded-[10px]"
       id={thisAnObj.id}
     >
       <img

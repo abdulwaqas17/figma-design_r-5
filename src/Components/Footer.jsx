@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { scaleOnScroll,fadeUpOnScroll,fadeDownOnScroll,fadeLeftOnScroll,fadeRightOnScroll } from "../animations/gsap";
 
 const Footer = () => {
+
+
+  useEffect(()=> {
+
+    scaleOnScroll('.scaleUp');
+    fadeUpOnScroll('.myCarts');
+    fadeDownOnScroll('.fadeOut');
+    fadeRightOnScroll('.right');
+    fadeLeftOnScroll('.left');
+  },[])
+
+
+
   return (
     <div className="footer">
       <div className="bg-purple-700 text-white p-[20px] md:p-20">
-        <h2 className="font-bold text-[1.3rem] md:text-4xl text-center w-full md:w-[60%] md:mx-auto">
+        <h2 className="fadeOut font-bold text-[1.3rem] md:text-4xl text-center w-full md:w-[60%] md:mx-auto">
           Lorem ipsum dolor sit amet contur asi cing elit to find
         </h2>
 
@@ -12,14 +26,14 @@ const Footer = () => {
           <input
             type="text"
             placeholder="Search"
-            className="bg-white text-black px-[5px] md:px-3 md:py-2 w-[150px] md:w-[250px]"
+            className="left bg-white text-black px-[5px] md:px-3 md:py-2 w-[150px] md:w-[250px]"
           />
-          <button className="bg-none border-1 border-white px-[10px] md:px-6 py-1 md:text-xl">
+          <button className="right bg-none border-1 border-white px-[10px] md:px-6 py-1 md:text-xl">
             Search Now
           </button>
         </div>
 
-        <p className="md:w-[60%] w-full text-[.9rem] md:text-[1.1rem] text-center md:mx-auto">
+        <p className="myCarts md:w-[60%] w-full text-[.9rem] md:text-[1.1rem] text-center md:mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
           blanditiis, necessitatibus dicta distinctio maxime provident illum quo
           assum
@@ -28,7 +42,7 @@ const Footer = () => {
 
       <div className="bottom px-[20px] md:px-20 pt-[36px] md:pt-15 pb-[10px] md:pb-6">
         <div className="logo mx-auto w-[100px] md:w-[200px]">
-        <img src="/assets/figma-9.jpg" alt="" />
+        <img className="scaleUp" src="/assets/figma-9.jpg" alt="" />
 
         </div>
 
@@ -40,16 +54,16 @@ const Footer = () => {
         </ul>
 
         <ul className="flex justify-center gap-[15px] text-[.8rem] font-bold">
-          <li className="w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
+          <li className="scaleUp w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
             PK
           </li>
-          <li className="w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
+          <li className="scaleUp w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
             WI
           </li>
-          <li className="w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
+          <li className="scaleUp w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
             AU
           </li>
-          <li className="w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
+          <li className="scaleUp w-[30px] h-[30px] bg-purple-700 text-white rounded-full flex justify-center items-center">
             EN
           </li>
         </ul>
