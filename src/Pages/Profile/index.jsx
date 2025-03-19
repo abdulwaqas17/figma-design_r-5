@@ -251,16 +251,16 @@ const Profile = () => {
   };
 
   return (
-    <div className="md:mt-[80px]">
+    <div>
       <Navbar />
-      <div className="min-h-screen flex flex-col bg-gray-100 p-6">
+      <div className="min-h-screen flex flex-col bg-gray-100 p-6 mt-[50px] md:mt-[80px]">
         <div className="flex flex-col md:flex-row  gap-6">
      {/* User Info Section */}
 <div className="bg-white p-8 rounded-2xl shadow-lg w-full md:w-1/3 flex flex-col items-center text-center">
   <img
-    src="https://wallpapers.com/images/hd/contact-profile-icon-orange-background-r9rxk5644r2zxpzj.png"
+    src="https://cdn-icons-png.flaticon.com/512/10542/10542486.png"
     alt="Profile"
-    className="w-40 h-40 rounded-full border-4 border-purple-600 shadow-md mb-4"
+    className="w-50 h-50 rounded-full shadow-md mb-4"
   />
   
   <h2 className="text-2xl font-bold text-gray-900">
@@ -272,13 +272,13 @@ const Profile = () => {
   <div className="mt-4 space-y-2 text-gray-700 text-lg">
     <p>{loginUser ? loginUser.country : "No Country"}</p>
     <p>{loginUser ? loginUser.dob : "No DOB"}</p>
-    <p className="font-semibold text-purple-600">
-      Blogs Written: <span className=" text-purple-600">{loginUser ? loginUser.posts.length : "0"}</span>
+    <p className="font-semibold text-[#7213df]">
+      Blogs Written: <span className=" text-[#7213df]">{loginUser ? loginUser.posts.length : "0"}</span>
     </p>
   </div>
 
   <div className="mt-6 flex gap-4">
-    <button className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-5 py-2 rounded-lg shadow">
+    <button className="bg-[#7213df] cursor-pointer hover:bg-[#7213df] text-white px-5 py-2 rounded-lg shadow">
       Edit Profile
     </button>
     <button
@@ -294,7 +294,7 @@ const Profile = () => {
 
           {/* Blog Form Section */}
           <div className="bg-white p-6 rounded-2xl shadow-lg w-full md:w-2/3">
-            <h2 className="text-2xl font-semibold text-purple-600 mb-4">
+            <h2 className="text-2xl font-semibold text-[#7213df] mb-4">
               Create a Blog
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -326,20 +326,20 @@ const Profile = () => {
                 value={blog.description}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded-md"
-                rows="4"
+                rows="9"
                 maxLength="145"
                 minLength="10"
               ></textarea>
               <div className="flex gap-4">
                 <button
-                  className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-md"
+                  className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-md cursor-pointer" 
                   onClick={cancel}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md"
+                  className="bg-[#7213df] hover:bg-[#7213df] text-white px-4 py-2 rounded-md cursor-pointer"
                 >
                   Create Post
                 </button>

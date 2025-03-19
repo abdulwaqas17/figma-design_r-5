@@ -120,7 +120,7 @@ const Blog = () => {
   
 
       <Navbar />
-      <main className="bg-gray-100 px-[20px] md:px-[50px] pb-[80px]">
+      <main className="bg-gray-100 px-[20px] md:px-[50px] pb-[80px] md:mt-[80px] mt-[60px]">
         <section className="md:pt-[70px] pt-[40px] md:mb-[90px] mb-[50px] text-center">
           <h3 className="md:text-2xl font-bold">Hello React</h3>
           <h1 className="py-[20px] text-2xl md:text-5xl font-bold">
@@ -135,7 +135,7 @@ const Blog = () => {
 
           onClick={() => navigate('/profile')}
             
-            className="font-bold md:px-[20px] px-[15px] md:py-[10px] py-[10px] border-[2px] hover:border-purple-700 hover:text-black hover:bg-transparent cursor-pointer bg-purple-700 text-white md:text-xl transition-all rounded-[13px]"
+            className="font-bold md:px-[20px] px-[15px] md:py-[10px] py-[10px] border-[2px] hover:border-[#7213df] hover:text-black hover:bg-transparent cursor-pointer bg-[#7213df] text-white md:text-xl transition-all rounded-[13px]"
           >
             Create Your Blog
           </button>

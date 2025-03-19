@@ -61,7 +61,7 @@ const Hero = () => {
 
 
   return (
-    <div className="mt-[60px] flex justify-between flex-col md:flex-row gap-[60px] md:p-20 md:pl-25 py-[50px] px-[20px] bg-purple-500 text-white">
+    <div className="mt-[60px] flex justify-between flex-col md:flex-row gap-[60px] md:p-20 md:pl-25 py-[50px] px-[20px] bg-[#7213df] text-white">
       <div className="heroLeft w-full">
         <h3 className="md:text-2xl font-bold">Featured Post</h3>
         <h1 className="md:text-5xl font-bold pt-10 pb-5" >

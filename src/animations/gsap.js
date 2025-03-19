@@ -32,6 +32,31 @@ export const fadeUpOnScroll = (selector) => {
 
 
 
+// visibleOnScroll
+export const visibleOnScroll = (selector) => {
+  gsap.utils.toArray(selector).forEach((item) => {
+    gsap.fromTo(
+      item,
+      { opacity: 0}, // Start: Hidden & Down
+      {
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+          end: "top 60%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
+
+
+};
+
+
+
 //fadeDownOnScroll
 export const fadeDownOnScroll = (selector) => {
   gsap.utils.toArray(selector).forEach((item) => {

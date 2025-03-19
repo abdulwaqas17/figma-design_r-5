@@ -4,6 +4,7 @@ import { getDoc, doc } from "firebase/firestore";
 import Navbar from "../../Components/Navbar";
 import Cart from "../../Components/Cart";
 import PostTagline from "../../Components/PostTagline";
+import { fadeDownOnScroll } from "../../animations/gsap";
 // import { al } from "react-router/dist/development/fog-of-war-CCAcUMgB";
 
 const Post = () => {
@@ -19,6 +20,9 @@ const Post = () => {
   console.log("[] use effect before");
   // use effcet which run only 1 time, set post id
   useEffect(() => {
+
+    fadeDownOnScroll('.down')
+
     console.log("[] use effect of /post");
     setPostDataID(window.localStorage.getItem("postID"));
     console.log("[] use effect of /post after set");
@@ -221,10 +225,10 @@ const Post = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center gap-[50px] p-4">
-        <div className="max-w-3xl w-full bg-white shadow-lg rounded-2xl overflow-hidden">
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center gap-[50px] p-4 md:mt-[75px] mt-[70px]">
+        <div className="down max-w-3xl w-full bg-white shadow-lg rounded-2xl overflow-hidden md:mt-[30px]">
           {/* Blog Heading */}
-          <h1 className="text-center text-3xl font-bold text-purple-700 py-6">
+          <h1 className="text-center text-3xl font-bold text-[#7213df] py-6">
             {postData !== null ? postData.title : ""}
             {/* Blog Title */}
           </h1>
@@ -238,7 +242,9 @@ const Post = () => {
 
           {/* Short Paragraph */}
           <p className="text-gray-700 p-6 text-center text-lg">
+            "
             {postData !== null ? postData.description : ""}
+            "
             {/* This is a short introduction paragraph giving a brief overview of the
           blog topic. */}
           </p>
@@ -294,7 +300,7 @@ const Post = () => {
             <img
               src="https://wallpapers.com/images/hd/contact-profile-icon-orange-background-r9rxk5644r2zxpzj.png"
               alt="Author"
-              className="w-16 h-16 rounded-full border-2 border-purple-600"
+              className="w-16 h-16 rounded-full border-2 border-[#7213df]"
             />
             <div>
               <h2 className="text-xl font-bold text-gray-800">

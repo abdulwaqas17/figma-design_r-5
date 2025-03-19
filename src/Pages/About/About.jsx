@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../Components/Navbar";
 import PostTagline from "../../Components/PostTagline";
 import ThreeCarts from "../../Components/ThreeCarts";
 import Footer from "../../Components/Footer";
 import Cart from '../../Components/Cart'
+import { fadeDownOnScroll, fadeLeftOnScroll, fadeRightOnScroll, fadeUpOnScroll, visibleOnScroll } from "../../animations/gsap";
 
 const About = () => {
+
+
+  useEffect(()=> {
+
+    visibleOnScroll('.visible');
+    fadeLeftOnScroll('.left')
+    fadeRightOnScroll('.right')
+    fadeUpOnScroll('.up')
+  },[])
+
+
   return (
     <div>
       <Navbar />
 
-      <main className="bg-gray-100 p-[20px] md:p-[50px]">
+      <main className="bg-gray-100 p-[20px] md:p-[50px] mt-[60px] md:mt-[70px]">
         <section className="md:pl-[120px] pl-[20px] pr-[30px] md:pr-[100px]">
           <h3 className="font-black">
             Hello <span className="pl-[10px] text-gray-500">React</span>
@@ -23,19 +35,19 @@ const About = () => {
 
         <section>
           <div className="flex justify-center my-[20px]">
-            <img src="/assets/figma-7.5.jpg" alt="" />
+            <img className="visible" src="/assets/figma-7.5.jpg" alt="" />
           </div>
         </section>
 
         <section className="md:px-[115px] md:p-[30px] text-[0.8rem] md:text-[1rem]">
-          <p className="pb-[25px]">
+          <p className="right pb-[25px]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Reprehenderit dignissimos quas, corporis libero nostrum odio qui
             veritatis praesentium minus voluptate, sint tempora dolorem eum
             similique. Nam magni nisi perferendis praesentium!
           </p>
 
-          <p>
+          <p className="right">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Reprehenderit dignissimos quas, corporis libero nostrum odio qui
             veritatis praesentium minus voluptate, sint tempora dolorem eum
@@ -49,8 +61,8 @@ const About = () => {
             numquam quod deserunt sapiente ut modi nem
           </p>
 
-          <div className="md:my-[50px] my-[30px]">
-            <div className="pl-[13px] pt-[3px] ml-[30px] h-[100px] border-l-purple-900 border-l-[5px] h">
+          <div className="md:my-[50px] my-[30px] left">
+            <div className="pl-[13px] pt-[3px] ml-[30px] h-[100px] border-l-[#7213df] border-l-[5px] h">
               <p className="md:text-2xl text-gray-700 italic md:leading-[45px] text-[.92rem]">
                 "Lorem ipsum dolor sit amet onsectetur, adipisicing elit.
                 Consequatur libero non expedita et debitis ab perspiciatis odio.
@@ -62,7 +74,7 @@ const About = () => {
             </p>
           </div>
 
-          <p>
+          <p className="right">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
             alias consectetur earum aperiam, fugit, tempore debitis qui numquam
             nostrum excepturi accusantium, saepe reiciendis asperiores? Sapiente
@@ -78,10 +90,10 @@ const About = () => {
           </p>
 
           <section className="flex justify-center my-[40px]">
-            <div className="md:w-[75%] w-full md:h-[320px] h-[250px] bg-[url(assets/figma-16.jpg)] bg-cover bg-center rounded-[16px]"></div>
+            <div className="visible md:w-[75%] w-full md:h-[320px] h-[250px] bg-[url(assets/figma-16.jpg)] bg-cover bg-center rounded-[16px]"></div>
           </section>
 
-          <p>
+          <p className="up">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut
             laboriosam nihil recusandae delectus veniam voluptate esse ipsum cum
             temporibus ab, soluta error. Atque vero dignissimos incidunt error.

@@ -52,7 +52,7 @@ const Cart = (thisAnObj) => {
         <p className="py-4">{thisAnObj.para}</p>
 
         <p
-          className="text-purple-900 text-xl font-bold cursor-pointer"
+          className="text-[#7213df] text-xl font-bold cursor-pointer"
           onClick={() => postFunc(thisAnObj.id)}
         >
           View Blog ...
