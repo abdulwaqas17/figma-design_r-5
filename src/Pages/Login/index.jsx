@@ -4,6 +4,7 @@ import { auth } from "../../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../services/firebase";
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -20,24 +21,30 @@ const LoginForm = () => {
     e.preventDefault();
     await signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then(async (userCredential) => {
-        alert("Sign in successfully");
+       
+        toast.success('Sign in successfully!', {
+          autoClose: 1200, // 1 second
+        });
 
         let usersData = await getDocs(collection(db, "users"))
           .then((u) => {
+           
+            
             u.forEach((doc) => {
+              console.log(doc.data().email);
               if (doc.data().email === formData.email) {
                 window.localStorage.setItem("LoginUserID", doc.id);
-                alert("Go to home page");
+                // alert("Go to home page");
                 navigate("/");
               }
             });
           })
           .catch((c) => {
-            alert(c);
+            toast.error('Faild to Sign up');
           });
       })
       .catch((c) => {
-        alert(c);
+        toast.error('Error Sign up');
       });
   };
 

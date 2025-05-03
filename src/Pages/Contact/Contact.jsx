@@ -34,27 +34,27 @@ const Contact = () => {
                 A
               </div>
               <h3 className="font-black py-3 text-xl">Office</h3>
-              <p>In to the bussiness</p>
+              <p>In to the Office</p>
             </div>
 
             <div className="down box md:w-[31%] w-full bg-white rounded-[10px] py-[40px]  pb-[50px] flex  flex-col items-center">
               <div className="cir w-[60px] h-[60px] rounded-full bg-[#7213df] text-white flex justify-center items-center">
-                A
+                B
               </div>
-              <h3 className="font-black py-3 text-xl">Office</h3>
-              <p>In to the bussiness</p>
+              <h3 className="font-black py-3 text-xl">Institue</h3>
+              <p>In to the Institue</p>
             </div>
             <div className="right box md:w-[31%] w-full bg-white rounded-[10px] py-[30px]  pb-[40px] flex  flex-col items-center">
               <div className="cir w-[60px] h-[60px] rounded-full bg-[#7213df] text-white flex justify-center items-center">
-                A
+                C
               </div>
-              <h3 className="font-black py-3 text-xl">Office</h3>
+              <h3 className="font-black py-3 text-xl">Bussiness</h3>
               <p>In to the bussiness</p>
             </div>
           </div>
         </header>
 
-        <section className="visible bg-[url(assets/figma-17.jpg)] bg-cover bg-center h-[400px] md:h-[500px] relative">
+        <section className="visible bg-[url(/assets/figma-17.jpg)] bg-cover bg-center h-[400px] md:h-[500px] relative">
           <div className="up form md:w-[40%] w-[84%] p-[20px] md:p-[40px] bg-white rounded-[20px] absolute top-[100px] md:top-[300px] md:left-[30%] left-[7%]">
             <div className="div flex justify-between gap-[20px] my-[13px]">
               <div>

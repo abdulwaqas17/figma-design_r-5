@@ -7,6 +7,8 @@ import { useNavigate } from "react-router";
 import PostTagline from "../../Components/PostTagline";
 import Cart from "../../Components/Cart";
 import { signOut } from "firebase/auth";
+import Swal from 'sweetalert2';
+import { toast } from "react-toastify";
 
 const Profile = () => {
   // const authorData = JSON.parse(window.localStorage.getItem('LoginUserData'))
@@ -44,7 +46,9 @@ const Profile = () => {
             console.log("No such document!");
           }
         } catch (e) {
-          alert(e);
+          toast.error(e, {
+            autoClose: 1200, // 1 second
+          });
         }
       }
     };
@@ -171,18 +175,30 @@ const Profile = () => {
       try {
         await setDoc(doc(db, "users", loginUserID), myAutherObj);
       } catch (err) {
-        alert(err);
+        toast.error(err);
       }
 
-      alert("your post created successfully");
-      navigate("/blog");
+      // alert("your post created successfully");
+      Swal.fire({
+        title: "Post Created Successfully!",
+        icon: "success",
+        draggable: true
+      }).then(() => {
+        navigate("/blog");
+      });
+      
     })
     .catch((c) => {
       console.log(c);
     });
  }  else {
-  alert('Kindly Sign up First');
-  navigate('/signup')
+  toast.warning('Kindly Sign up First', {
+    autoClose: 1200, // 1 second
+  });
+  
+  setTimeout(() => {
+    navigate('/signup')
+  }, 1200);
  }
   };
 
@@ -240,12 +256,19 @@ const Profile = () => {
   const onLogout = () => {
     signOut(auth)
       .then(() => {
-        alert("Log out Successfully");
+        // alert("Log out Successfully");
+        toast.success("Log out Successfully", {
+          autoClose: 1200, // 1 second
+        })
         window.localStorage.removeItem("LoginUserID");
-        navigate("/signup");
+        setTimeout(() => {
+          navigate("/signup");
+        }, 1200); // 1.5 seconds ka delay
       })
       .catch((e) => {
-        alert(e);
+           toast.error(e.message || "Logout failed", {
+            autoClose: 1200, // 1 second
+          });
         console.log(e);
       });
   };

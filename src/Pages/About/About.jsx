@@ -90,7 +90,7 @@ const About = () => {
           </p>
 
           <section className="flex justify-center my-[40px]">
-            <div className="visible md:w-[75%] w-full md:h-[320px] h-[250px] bg-[url(assets/figma-16.jpg)] bg-cover bg-center rounded-[16px]"></div>
+            <div className="visible md:w-[75%] w-full md:h-[320px] h-[250px] bg-[url(/assets/figma-16.jpg)] bg-cover bg-center rounded-[16px]"></div>
           </section>
 
           <p className="up">

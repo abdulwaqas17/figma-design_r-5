@@ -13,6 +13,8 @@ import SignupForm from './Pages/SignUp/index'
 import LoginForm from './Pages/Login/index'
 import Profile from './Pages/Profile'
 import Post from './Pages/Post'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
          <Route path='/post' element={<Post/>} />
 
        </Routes>
+
+       <ToastContainer /> {/* 👈 Yeh hamesha last me or top level pe hona chahiye */}
      
      </BrowserRouter>
 

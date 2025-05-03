@@ -4,6 +4,7 @@ import { auth } from "../../services/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../../services/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -23,16 +24,24 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+    await createUserWithEmailAndPassword(
+      auth,
+      formData.email,
+      formData.password
+    )
       .then(async (userDetails) => {
         await addDoc(collection(db, "users"), formData)
           .then(() => {
-            alert("Sign up successfully");
+            toast.success("Sign up successfully!", {
+              autoClose: 1200, // 1 second
+            });
+           setTimeout(() => {
             navigate("/signin");
+           }, 1200);
           })
-          .catch((err) => alert(err));
+          .catch((err) => toast.error(err));
       })
-      .catch((c) => alert(c));
+      .catch((c) => toast.error(c));
   };
 
   return (
@@ -108,7 +117,9 @@ const SignupForm = () => {
           />
           <div className="flex items-center">
             <input type="checkbox" id="remember" className="mr-2" />
-            <label htmlFor="remember" className="text-black">Remember me</label>
+            <label htmlFor="remember" className="text-black">
+              Remember me
+            </label>
           </div>
           <button
             type="submit"
@@ -117,7 +128,7 @@ const SignupForm = () => {
             Sign Up
           </button>
           <p className="text-center mt-4 text-black">
-            Already have an account? {" "}
+            Already have an account?{" "}
             <Link to="/signin" className="text-purple-900 hover:underline ">
               Sign In
             </Link>

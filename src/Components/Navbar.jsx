@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { toast } from "react-toastify";
 
 gsap.registerPlugin(ScrollTrigger);
 const Navbar = () => {
@@ -42,8 +43,12 @@ const Navbar = () => {
       console.log("login id", isUser);
       navigate("/profile");
     } else {
-      alert("Kindly Signup First");
-      navigate("/signup");
+      toast.warning("Kindly Signup First", {
+        autoClose : 1500
+      });
+      setTimeout(() => {
+        navigate("/signup");
+      }, 1600);
     }
   };
 
